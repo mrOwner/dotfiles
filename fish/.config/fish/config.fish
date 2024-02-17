@@ -16,6 +16,7 @@ alias lt="ls --tree"
 alias cat="bat"
 
 alias v="nvim"
+alias vi="nvim"
 alias vim="nvim"
 
 # Handy change dir shortcuts
