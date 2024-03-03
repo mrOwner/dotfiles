@@ -4,7 +4,7 @@ return {
       vim.g.codeium_idle_delay = 5
       vim.g.codeium_disable_bindings = 1
 
-      vim.keymap.set("i", "<M-Tab>", function()
+      vim.keymap.set("i", "<Tab>", function()
          -- vim.api.nvim_input(vim.fn["codeium#Accept"]())
          return vim.fn["codeium#Accept"]()
       end, { expr = true })
