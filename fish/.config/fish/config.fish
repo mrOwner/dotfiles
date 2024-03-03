@@ -38,6 +38,7 @@ alias vi="nvim"
 alias v="nvim"
 
 alias v-fish="nvim ~/.config/fish/config.fish"
+alias v-hypr="nvim ~/.config/hypr"
 
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go
@@ -66,4 +67,3 @@ function kill-by-port -d "Ебашит приложение по занятом�
         echo "На порту $argv[1] нет активных процессов"
     end
 end
-
