@@ -41,6 +41,7 @@ alias v-fish="nvim ~/.config/fish/config.fish"
 alias v-hypr="nvim ~/.config/hypr"
 alias v-conf="nvim ~/.config/nvim"
 alias v-dot="nvim ~/.dotfiles"
+alias v-kitty="nvim ~/.config/kitty/kitty.conf"
 
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go

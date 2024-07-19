@@ -67,6 +67,9 @@ map("n", "<leader>ct", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "T
 -- Folds.
 map("n", "z1", "<cmd>%s/^func [a-zA-Z0-9_]*(/norm zc<cr><esc>", { desc = "Fold 1 level" })
 
+-- map("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { noremap = true, desc = "Recent" })
+-- map("n", "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), { noremap = true, desc = "Recent (cwd)" })
+
 -- Splits.
 map("n", "<leader>msf", function()
    utils.FormatGoFunction()

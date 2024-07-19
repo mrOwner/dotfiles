@@ -26,8 +26,14 @@ addPath("go env GOMODCACHE 2>&1", "$GOMODCACHE", replacements)
 return {
    "nvim-telescope/telescope.nvim",
    keys = {
-      { "<leader>*", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+      { "<leader>*", Util.pick("grep_string", { cwd = vim.uv.cwd() }), desc = "Word (cwd)" },
       { "<leader>'", "<cmd>Telescope resume<cr>", desc = "Resume last search" },
+      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>fF", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+      { "<leader>ff", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
    },
    opts = {
       defaults = {

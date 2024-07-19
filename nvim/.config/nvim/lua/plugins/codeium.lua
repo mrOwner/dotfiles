@@ -1,10 +1,14 @@
 return {
    "Exafunction/codeium.vim",
    config = function()
+      require("codeium").setup({
+         enable_chat = true,
+      })
+
       vim.g.codeium_idle_delay = 5
       vim.g.codeium_disable_bindings = 1
 
-      vim.keymap.set("i", "<Tab>", function()
+      vim.keymap.set("i", "<S-Tab>", function()
          -- vim.api.nvim_input(vim.fn["codeium#Accept"]())
          return vim.fn["codeium#Accept"]()
       end, { expr = true })

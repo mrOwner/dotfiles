@@ -22,19 +22,19 @@ return {
                      parameterNames = false,
                   },
                },
-               -- golangci_lint_ls = {
-               --    init_options = {
-               --       command = {
-               --          "golangci-lint",
-               --          "run",
-               --          "--new",
-               --          "--config",
-               --          "~/.golangci.yaml",
-               --          "--out-format",
-               --          "json",
-               --       },
-               --    },
-               -- },
+               golangci_lint_ls = {
+                  init_options = {
+                     command = {
+                        "golangci-lint",
+                        "run",
+                        "--new",
+                        "--config",
+                        "~/.golangci.yaml",
+                        "--out-format",
+                        "json",
+                     },
+                  },
+               },
             },
          },
          lsp_keymaps = false,
@@ -85,10 +85,12 @@ return {
    {
       "folke/which-key.nvim",
       opts = {
-         defaults = {
-            -- ["<leader>ts"] = { name = "Test for" },
-            ["<leader>tc"] = { name = "Coverage" },
-            ["<leader>to"] = { name = "Open test" },
+         spec = {
+            {
+               mode = { "n" },
+               { "<leader>tc", group = "Coverage" },
+               { "<leader>to", group = "Open test" },
+            },
          },
       },
    },

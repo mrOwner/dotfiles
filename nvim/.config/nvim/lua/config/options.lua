@@ -10,8 +10,12 @@ opt.shiftwidth = 3 -- Size of an indent
 
 opt.swapfile = false
 
+opt.colorcolumn = "120"
+
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- opt.foldlevel = 20
 
 vim.opt.listchars = { tab = "  ", trail = "·", extends = "»", precedes = "«", nbsp = "░" }
+
+-- vim.g.deprecation_warnings

@@ -23,9 +23,7 @@ return {
    },
    keys = {
       { "<S-Down>", "<Cmd>MultipleCursorsAddDown<CR>", mode = { "n", "i" } },
-      -- { "<S-j>", "<Cmd>MultipleCursorsAddDown<CR>" },
       { "<S-Up>", "<Cmd>MultipleCursorsAddUp<CR>", mode = { "n", "i" } },
-      -- { "<S-k>", "<Cmd>MultipleCursorsAddUp<CR>" },
       { "<S-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", mode = { "n", "i" } },
    },
 }
