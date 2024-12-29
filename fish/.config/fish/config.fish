@@ -13,12 +13,11 @@ alias nt="sed 's/\\\\\n/\n/g; s/\\\\\t/\t/g'"
 alias lint="golangci-lint run --new --fix ./..."
 
 # List Directory
-alias ls="lsd"
-alias l="ls -lt --date relative"
-alias la="ls -a --date date"
-alias ll="ls -l --date date"
-alias lla="ls -la --date date"
-alias lt="ls --tree"
+alias l='eza -lh  --icons=auto' # long list
+alias ls='eza -1   --icons=auto' # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias lt='eza --icons=auto --tree' # list folder as tree
 
 # Handy change dir shortcuts
 abbr .. 'cd ..'
@@ -28,7 +27,6 @@ abbr .4 'cd ../../../..'
 abbr .5 'cd ../../../../..'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-abbr mkdir 'mkdir -vp'
 
 # Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
 alias ssh='kitten ssh'
@@ -70,3 +68,4 @@ function kill-by-port -d "Ебашит приложение по занятом�
         echo "На порту $argv[1] нет активных процессов"
     end
 end
+abbr mkdir 'mkdir -p'
