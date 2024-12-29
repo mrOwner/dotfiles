@@ -26,6 +26,8 @@ abbr .3 'cd ../../..'
 abbr .4 'cd ../../../..'
 abbr .5 'cd ../../../../..'
 
+abbr mkdir 'mkdir -p'
+
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 
 # Fixes "Error opening terminal: xterm-kitty" when using the default kitty term to open some programs through ssh
@@ -68,4 +70,3 @@ function kill-by-port -d "Ебашит приложение по занятом�
         echo "На порту $argv[1] нет активных процессов"
     end
 end
-abbr mkdir 'mkdir -p'
