@@ -4,6 +4,7 @@
 
 local map = vim.keymap.set
 local utils = require("utils.splits")
+local os_name = vim.loop.os_uname().sysname
 
 -- Cmd line.
 map("c", "<C-j>", "<C-n>")
@@ -19,8 +20,13 @@ map("v", "<C-i>", "<Esc><C-i>", { silent = true })
 
 -- New line.
 map("n", "<C-j>", "o<Esc>", { silent = true })
-map("n", "<M-j>", "i<Cr><Esc>", { silent = true })
-map("n", "<M-k>", "i<Cr><Esc>k", { silent = true })
+if os_name == "Darwin" then
+   map("n", "<D-j>", "i<Cr><Esc>", { silent = true, desc = "Tear down" })
+   map("n", "<D-k>", "i<Cr><Esc>k", { silent = true, desc = "Tear up and come back" })
+else
+   map("n", "<A-j>", "i<Cr><Esc>", { silent = true, desc = "Tear down" })
+   map("n", "<A-k>", "i<Cr><Esc>k", { silent = true, desc = "Tear down and come back" })
+end
 
 -- Moving.
 map("i", "<C-e>", "<C-o>$", { silent = true })
@@ -54,12 +60,21 @@ map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window" })
 map("n", "<leader>we", ":Neotree focus<cr>", { desc = "NeoTree focus" })
 
 -- Move Lines.
-map("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-map("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+if os_name == "Darwin" then
+   map("n", "<D-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+   map("n", "<D-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+   map("i", "<D-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+   map("i", "<D-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+   map("v", "<D-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+   map("v", "<D-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+else
+   map("n", "<A-Down>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+   map("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+   map("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+   map("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+   map("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+   map("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+end
 
 -- LSP
 map("n", "<leader>ct", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "Type definition" })
@@ -67,10 +82,10 @@ map("n", "<leader>ct", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "T
 -- Folds.
 map("n", "z1", "<cmd>%s/^func [a-zA-Z0-9_]*(/norm zc<cr><esc>", { desc = "Fold 1 level" })
 
--- map("n", "<leader>fR", "<cmd>Telescope oldfiles<cr>", { noremap = true, desc = "Recent" })
--- map("n", "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), { noremap = true, desc = "Recent (cwd)" })
+-- Search and replace
+map("n", "<leader>R", ":%s/\\v(<C-r><C-w>)/\\1/g<left><left>", { desc = "Search and replace" })
 
--- Splits.
+-- My splits.
 map("n", "<leader>msf", function()
    utils.FormatGoFunction()
 end, { desc = "Split go function" })
