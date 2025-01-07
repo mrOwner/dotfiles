@@ -43,6 +43,8 @@ alias v-conf="nvim ~/.config/nvim"
 alias v-dot="nvim ~/.dotfiles"
 alias v-kitty="nvim ~/.config/kitty/kitty.conf"
 
+alias r="ranger"
+
 set -gx EDITOR nvim
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH $GOPATH/bin
