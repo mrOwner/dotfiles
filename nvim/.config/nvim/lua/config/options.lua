@@ -4,18 +4,19 @@
 
 local opt = vim.opt
 
-opt.tabstop = 3 -- spaces for indent.
-opt.smartindent = true -- Insert indents automatically
-opt.shiftwidth = 3 -- Size of an indent
-
-opt.swapfile = false
-
 opt.colorcolumn = "120"
 
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
--- opt.foldlevel = 20
+vim.g.ai_cmp = false
+vim.g.lazyvim_blink_main = true
 
-vim.opt.listchars = { tab = "  ", trail = "·", extends = "»", precedes = "«", nbsp = "░" }
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
 
--- vim.g.deprecation_warnings
+-- for vacuum
+vim.filetype.add({
+  pattern = {
+    [".*openapi.*%.ya?ml"] = "yaml.openapi",
+    [".*swagger.*%.ya?ml"] = "yaml.openapi",
+    [".*openapi.*%.json"] = "json.openapi",
+  },
+})
