@@ -5,14 +5,14 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    init = function()
-      local wk = require("which-key")
-      wk.add({
-        mode = { "n" },
-        { "<leader>a", group = "ai" },
-        { "<leader>aa", "<cmd>Codeium Chat<cr>", desc = "AI Chat" },
-      })
-    end,
+    -- init = function()
+    --   local wk = require("which-key")
+    --   wk.add({
+    --     mode = { "n" },
+    --     { "<leader>a", group = "ai" },
+    --     { "<leader>aa", "<cmd>Codeium Chat<cr>", desc = "AI Chat" },
+    --   })
+    -- end,
     config = function()
       require("codeium").setup({
         enable_cmp_source = false,

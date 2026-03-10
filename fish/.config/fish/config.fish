@@ -61,6 +61,7 @@ if status is-interactive
     alias v-conf="openrepo ~/.config/nvim"
     alias v-dot="openrepo ~/.dotfiles"
     alias v-kitty="openrepo ~/.config/kitty"
+    alias v-claude="openrepo ~/.claude"
 
     alias nodejs-11 "fmn use 11"
     alias nodejs-18 "fmn use 18"
@@ -152,3 +153,7 @@ function get-clipboard
         end
     end
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
