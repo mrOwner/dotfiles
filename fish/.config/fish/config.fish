@@ -1,13 +1,21 @@
 set -g fish_greeting
 
+source ~/.config/fish/secret.fish
+
 set -gx EDITOR (which nvim)
 set -gx GOPATH $HOME/go
 set -gx NVM_DIR $HOME/.nvm
 set -gx CGO_ENABLED true
+set -gx FLYCTL_INSTALL $HOME/.fly
+set -gx BUN_INSTALL $HOME/.bun
+set -gx PLAYWRIGHT_BROWSERS_PATH /usr/bin
+set -gx PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH /usr/bin/chromium
 
 set -x fish_user_paths
 fish_add_path ~/.cargo/bin
 fish_add_path ~/.mvn
+fish_add_path $FLYCTL_INSTALL/bin
+fish_add_path $BUN_INSTALL/bin
 fish_add_path $GOPATH/bin
 
 bind \ep "clear; echo (get-clipboard) | jaq | nt"
@@ -35,6 +43,7 @@ if status is-interactive
     alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
     alias ld='eza -lhD --icons=auto' # long list dirs
     alias lt='eza --icons=auto --tree' # list folder as tree
+    alias lsd='du -sh * | sort -hr'
 
     # Handy change dir shortcuts
     abbr .. 'cd ..'
@@ -153,7 +162,3 @@ function get-clipboard
         end
     end
 end
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH

@@ -62,3 +62,23 @@ vim.api.nvim_create_user_command("FixTestNames", function()
       %s/\(\.Run("\)\([^"]*\)\(", func(\)/\=submatch(1) . substitute(submatch(2), ' ', '_', 'g') . submatch(3)/e
     ]])
 end, { desc = "Replace spaces in t.Run test names with underscores" })
+
+vim.api.nvim_create_user_command("Sum", function(opts)
+  -- Получаем выделенный текст
+  local _, s_line, s_col, _ = unpack(vim.fn.getpos("'<"))
+  local _, e_line, e_col, _ = unpack(vim.fn.getpos("'>"))
+  local lines = vim.api.nvim_buf_get_lines(0, s_line - 1, e_line, false)
+  if #lines == 1 then
+    lines[1] = lines[1]:sub(s_col, e_col)
+  else
+    lines[1] = lines[1]:sub(s_col)
+    lines[#lines] = lines[#lines]:sub(1, e_col)
+  end
+  local str = table.concat(lines, " ")
+  local sum = 0
+  -- Ищем все числа (включая отрицательные и дробные)
+  for n in str:gmatch("-?%d+%.?%d*") do
+    sum = sum + tonumber(n)
+  end
+  print("Сумма: " .. sum)
+end, { range = true, desc = "Sum numbers in selection" })
