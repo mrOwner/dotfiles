@@ -64,15 +64,14 @@ return {
               },
               matcher = "Fuzzy",
               analyses = {
-                analyses = {
-                  shadow = true,
-                },
+                shadow = true,
+                ST1000 = false,
               },
             },
           },
-          on_attach = function(client)
+          on_attach = function(client, bufnr)
             if client.server_capabilities.codeLensProvider then
-              vim.lsp.codelens.refresh()
+              vim.lsp.codelens.enable(true, { bufnr = bufnr })
             end
           end,
         },
