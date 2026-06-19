@@ -31,6 +31,28 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
+      setup = {
+        gopls = function(_, _)
+          Snacks.util.lsp.on({ name = "gopls" }, function(_, client)
+            if client.server_capabilities.semanticTokensProvider then
+              return
+            end
+            local td = client.config.capabilities and client.config.capabilities.textDocument
+            local semantic = td and td.semanticTokens
+            if not semantic then
+              return
+            end
+            client.server_capabilities.semanticTokensProvider = {
+              full = true,
+              legend = {
+                tokenTypes = semantic.tokenTypes,
+                tokenModifiers = semantic.tokenModifiers,
+              },
+              range = true,
+            }
+          end)
+        end,
+      },
       ---@type lspconfig.options
       servers = {
         bufls = {},
