@@ -28,4 +28,8 @@ return {
       })
     end,
   },
+  {
+    "folke/sidekick.nvim",
+    opts = { nes = { enabled = false } },
+  },
 }
