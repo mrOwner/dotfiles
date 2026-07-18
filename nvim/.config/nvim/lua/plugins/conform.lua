@@ -8,6 +8,7 @@ return {
     opts.formatters_by_ft = vim.tbl_extend("force", opts.formatters_by_ft or {}, {
       go = { "gci" },
       yaml = { "prettier" },
+      sql = { "sqlfluff" },
     })
 
     opts.formatters = vim.tbl_extend("force", opts.formatters or {}, {
@@ -29,8 +30,9 @@ return {
         stdin = false,
       },
       sqlfluff = {
-        args = { "fix", "$FILENAME" },
-        stdin = false,
+        command = "sqlfluff",
+        args = { "format", "--disable-progress-bar", "-" },
+        stdin = true,
       },
       prettier = {
         prepend_args = function(self, ctx)
