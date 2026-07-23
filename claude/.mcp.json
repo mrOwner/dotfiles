@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    },
+    "filesystem": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/rain/code",
+        "/home/rain/.dotfiles",
+        "/home/rain/.config/fish",
+        "/home/rain/.config/hypr",
+        "/home/rain/.claude"
+      ],
+      "env": {}
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--browser",
+        "chromium",
+        "--executable-path",
+        "/usr/bin/chromium"
+      ]
+    },
+    "crypto-market-data": {
+      "type": "http",
+      "url": "https://mcp.crypto.com/market-data/mcp"
+    }
+  }
+}
